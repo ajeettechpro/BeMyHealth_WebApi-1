@@ -15,6 +15,7 @@ namespace BeMyHealth_WebApi.Models
         public string? Password { get; set; }
         [NotMapped]
         public string? ConfirmPassword { get; set; }
+        public string? RegisteredBy { get; set; }
         public DateTime? CreatedDate { get; set; } = DateTime.Now;
         public DateTime? UpdatedDate { get; set; } = DateTime.Now;
     }

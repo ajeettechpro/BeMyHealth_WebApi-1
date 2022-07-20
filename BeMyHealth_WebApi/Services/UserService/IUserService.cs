@@ -6,5 +6,6 @@ namespace BeMyHealth_WebApi.Services.UserService
     {
         Task<bool> CreateRegister(User user);
         Task<string> Login(string emailIdOrmobileNumber, string password);
+
     }
 }

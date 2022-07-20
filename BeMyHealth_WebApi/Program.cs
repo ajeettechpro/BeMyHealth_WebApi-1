@@ -2,6 +2,8 @@ using AutoMapper;
 using BeMyHealth_WebApi.ContextData;
 using BeMyHealth_WebApi.Dto;
 using BeMyHealth_WebApi.Models;
+using BeMyHealth_WebApi.Services.CustomDietPlanService;
+using BeMyHealth_WebApi.Services.SubscriptionService;
 using BeMyHealth_WebApi.Services.UserService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +26,19 @@ var config = new MapperConfiguration(cfg =>
          .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password))
          .ForMember(dest => dest.ConfirmPassword, opt => opt.MapFrom(src => src.ConfirmPassword))
         .ReverseMap();
+     cfg.CreateMap<CustomDietPlan, CustomDietPlanDto>()
+         .ForMember(dest => dest.DietName, opt => opt.MapFrom(src => src.DietName))
+         .ForMember(dest => dest.Day, opt => opt.MapFrom(src => src.Day))
+         .ForMember(dest => dest.Food, opt => opt.MapFrom(src => src.Food))
+         .ForMember(dest => dest.Quantity, opt => opt.MapFrom(src => src.Quantity))
+         .ForMember(dest => dest.DateTime, opt => opt.MapFrom(src => src.DateTime))
+        .ReverseMap();
+     cfg.CreateMap<CustomSubscription, CustomSubscriptionDto>()
+         .ForMember(dest => dest.SubscriptionName, opt => opt.MapFrom(src => src.SubscriptionName))
+         .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status))
+         .ForMember(dest => dest.Duration, opt => opt.MapFrom(src => src.Duration))
+         .ForMember(dest => dest.Amount, opt => opt.MapFrom(src => src.Amount))
+         .ReverseMap();
  }
 );
 IMapper mapper = config.CreateMapper();
@@ -36,6 +51,8 @@ builder.Services.AddDbContext<BeMyHealthDbContext>(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ICustomDietPlanService, CustomDietPlanService>();
+builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSwaggerGen(options =>
 {

@@ -4,6 +4,7 @@ using BeMyHealth_WebApi.ContextData;
 using BeMyHealth_WebApi.Dto;
 using BeMyHealth_WebApi.Helpers;
 using BeMyHealth_WebApi.Models;
+using BeMyHealth_WebApi.Services.SubscriptionService;
 using BeMyHealth_WebApi.Services.UserService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

@@ -10,5 +10,7 @@ namespace BeMyHealth_WebApi.ContextData
 
         }
         public DbSet<User> Users { get; set; }
-    }
+        public DbSet<CustomSubscription> CustomSubscriptions { get; set; }
+        public DbSet<CustomDietPlan> CustomDietPlans { get; set; }
+     }
 }
